@@ -151,6 +151,10 @@ class MyClass(str : String){
 
 }
 
+data class User(var name : String,var age : Int){
+    var sex : String = ""
+}
+
 
 
 class main {
@@ -166,5 +170,24 @@ class main {
             var sex = 1
         }
         println("$student.age $student.sex")
+        var user = User("test",10)
+        user.sex = "男"
+
+        // 编译不过 var user2 = user.copy(sex = "男")
+        var user2 = user.copy(age = 20)
+
+        var (name,age) = user2
+        // 不想要 name 属性
+        var(_,x) = user2
+        println("$name :　$age")
+
+        for((a,b) in listOf<User>(User("1",1),User("2",2))){
+            println("$a : $b")
+        }
+
+        var object2 = 1 to "hello"
+        var object3 = "hello" to "world"
+        object2.first
+        Triple("1","2","3")
     }
 }
